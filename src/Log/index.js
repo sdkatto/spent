@@ -25,7 +25,7 @@ let expenses = [
   { name: "Grocery", category: "Food", price: 2500.25 }
 ];
 
-let total = expenses.reduce((a, b) => a + b, 0);
+let total = expenses.reduce((a, expenses) => a + expenses.price, 0);
 
 let ExpensesListViewItem = expenses.map((expenses, index) => (
   <li className="list-group-item" key={index}>
