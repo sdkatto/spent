@@ -1,4 +1,6 @@
 import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
+
 const Categories = () => (
   <Switch>
     <Route exact path="/categories" component={CategoryList} />
