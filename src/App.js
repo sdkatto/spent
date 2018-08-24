@@ -7,7 +7,7 @@ import { Reports } from "../src/Reports";
 import { Categories } from "../src/Categories";
 
 const Header = () => (
-  <header className="col-12 bg-main text-center p-3">
+  <header className="col-12 mb-5 bg-main text-center p-3">
     <div className="text-main display-4 mt-4">
       <Link to={{ pathname: "/reports" }} className="mr-3">
         See
@@ -20,10 +20,11 @@ const Header = () => (
       <Link to={{ pathname: "/categories" }} className="mr-3">
         what you've
       </Link>
+      <br />
+      <Link to="/" className="display-0 font-weight-bold text-white m-0">
+        SPENT
+      </Link>
     </div>
-    <Link to="/" className="display-0 font-weight-bold text-white m-0">
-      SPENT
-    </Link>
   </header>
 );
 

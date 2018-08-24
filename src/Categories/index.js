@@ -9,26 +9,31 @@ const Categories = () => (
 );
 
 /*
-const CategoryList = () => (
-  <div>
-    <div className="col-12 text-center">
-      <h1> Categories</h1>
-      <button className="btn">Add Category</button>
-    </div>
-    <div className="col-8 offset-2 p-5">
-      <ul className="list-group">{CategoryListViewItem}</ul>
-    </div>
-  </div>
-);
-*/
+          <span
+            className="btn font-weight-bold text-main"
+            onClick={this.showModal}
+          >
+            Add New
+          </span>
+          */
 
 let Modal = ({ handleClose, show, children }) => {
-  let henlo = show ? "modal display-block" : "modal display-none";
+  let modalstyle = show ? "modal-black display-block" : "display-none";
   return (
-    <div className={henlo}>
-      <section className="modal-main">
-        {children}
-        <button onClick={handleClose}>close</button>
+    <div className={modalstyle}>
+      <section
+        className="w-25 modal-dialog modal-dialog-center"
+        role="document"
+      >
+        <div className="modal-content">
+          {children}
+          <div className="modal-footer">
+            <button className="btn btn-danger" onClick={handleClose}>
+              Cancel
+            </button>
+            <button className="btn bg-primary text-white">Add</button>
+          </div>
+        </div>
       </section>
     </div>
   );
@@ -48,14 +53,24 @@ class CategoryList extends Component {
     return (
       <div>
         <div className="col-12 text-center">
-          <h1> Categories</h1>
+          <h1 className="display-2"> Categories</h1>
           <Modal show={this.state.show} handleClose={this.hideModal}>
-            <p>Modal</p>
-            <p>Data</p>
+            <div className="modal-header">
+              <p className="modal-title">Add Category</p>
+            </div>
+            <div className="modal-body">
+              <input
+                className="form-control mb-2"
+                type="text"
+                placeholder="Category Name"
+              />
+              <textarea
+                className="form-control"
+                rows="5"
+                placeholder="Description"
+              />
+            </div>
           </Modal>
-          <button className="btn" onClick={this.showModal}>
-            Add Category
-          </button>
         </div>
         <div className="col-8 offset-2 p-5">
           <ul className="list-group">{CategoryListViewItem}</ul>
@@ -76,7 +91,7 @@ let CategoryListViewItem = categories.map((categories, index) => (
       <span>
         <h4>{categories.name}</h4>
       </span>
-      <h6>{categories.description}</h6>
+      <p>{categories.description}</p>
     </div>
   </li>
 ));
