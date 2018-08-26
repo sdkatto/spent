@@ -54,6 +54,12 @@ class CategoryList extends Component {
       <div>
         <div className="col-12 text-center">
           <h1 className="display-2"> Categories</h1>
+          <span
+            className="btn bg-main text-white mt-3"
+            onClick={this.showModal}
+          >
+            Add New
+          </span>
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <div className="modal-header">
               <p className="modal-title">Add Category</p>
