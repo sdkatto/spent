@@ -1,43 +1,14 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+
+import { Modal } from "../Components/Modal";
+import { ListView } from "../Categories/ListView";
 
 const Categories = () => (
   <Switch>
     <Route exact path="/categories" component={CategoryList} />
-    <Route path="/categories/:category" component={SpecificCategory} />
   </Switch>
 );
-
-/*
-          <span
-            className="btn font-weight-bold text-main"
-            onClick={this.showModal}
-          >
-            Add New
-          </span>
-          */
-
-let Modal = ({ handleClose, show, children }) => {
-  let modalstyle = show ? "modal-black display-block" : "display-none";
-  return (
-    <div className={modalstyle}>
-      <section
-        className="w-25 modal-dialog modal-dialog-center"
-        role="document"
-      >
-        <div className="modal-content">
-          {children}
-          <div className="modal-footer">
-            <button className="btn btn-danger" onClick={handleClose}>
-              Cancel
-            </button>
-            <button className="btn bg-primary text-white">Add</button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
 
 class CategoryList extends Component {
   state = { show: false };
@@ -68,7 +39,7 @@ class CategoryList extends Component {
               <input
                 className="form-control mb-2"
                 type="text"
-                placeholder="Category Name"
+                placeholder="Title"
               />
               <textarea
                 className="form-control"
@@ -79,33 +50,11 @@ class CategoryList extends Component {
           </Modal>
         </div>
         <div className="col-8 offset-2 p-5">
-          <ul className="list-group">{CategoryListViewItem}</ul>
+          <ListView />
         </div>
       </div>
     );
   }
 }
-
-let categories = [
-  { name: "Food", description: "Om nom nom nom" },
-  { name: "Entertainment", description: "Wow oh wow" }
-];
-
-let CategoryListViewItem = categories.map((categories, index) => (
-  <li className="list-group-item highlight" key={index}>
-    <div className="float-left">
-      <span>
-        <h4>{categories.name}</h4>
-      </span>
-      <p>{categories.description}</p>
-    </div>
-  </li>
-));
-
-const SpecificCategory = () => (
-  <div className="text-center">
-    <h1 className="display-1">Categories</h1>
-  </div>
-);
 
 export { Categories };
