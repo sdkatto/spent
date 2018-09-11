@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import moment from "moment";
 
 const ListViewItem = ({ expenses }) => {
   const expensesItem = expenses.map(expenses => {
@@ -13,7 +14,7 @@ const ListViewItem = ({ expenses }) => {
             <button className="btn mr-2 bg-main text-white">
               {expenses.category_title}
             </button>
-            <small>{expenses.date}</small>
+            <small>{moment(expenses.date).format("MMMM DD YYYY")}</small>
           </h6>
         </div>
         <div className="float-right text-right">
